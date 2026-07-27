@@ -162,12 +162,107 @@
     z-index:0;
     pointer-events:none;
   }
+  .hero-cols{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
   .hero-inner{
     position:relative;z-index:2;
     display:grid;
     grid-template-columns:1fr;
     gap:24px;
-    max-width:760px;
+  }
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* hero mockup popup */
+  .hero-mockup{
+    background:#16161c;
+    border:1px solid rgba(241,240,225,0.1);
+    border-radius:16px;
+    width:300px;
+    box-shadow:0 32px 80px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(124,147,184,0.08);
+    overflow:hidden;
+    animation:hero-float 7s ease-in-out infinite;
+  }
+  @keyframes hero-float{
+    0%,100%{ transform:translateY(0px); }
+    50%{ transform:translateY(-10px); }
+  }
+  .mockup-header{
+    padding:14px 16px;
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid rgba(241,240,225,0.07);
+    background:#101015;
+  }
+  .mockup-body{ padding:16px; display:flex; flex-direction:column; gap:12px; }
+  .mockup-label{ font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#6B6A62; }
+  .mockup-select{
+    display:flex;align-items:center;gap:8px;
+    background:#101015;border:1px solid rgba(241,240,225,0.09);
+    border-radius:8px;padding:10px 12px;
+    font-family:var(--mono);font-size:12px;color:#F1F0E1;
+  }
+  .mockup-select span{ flex:1; }
+  .mockup-actions{ display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+  .mockup-btn-primary{
+    background:#506385;border-radius:8px;padding:10px 12px;
+    font-family:var(--mono);font-size:11px;color:#F1F0E1;
+    display:flex;align-items:center;gap:6px;cursor:pointer;
+  }
+  .mockup-btn-ghost{
+    background:#1c1c24;border:1px solid rgba(241,240,225,0.09);border-radius:8px;
+    padding:10px 12px;font-family:var(--mono);font-size:11px;color:#A8A79A;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+  }
+  .mockup-divider{ height:1px;background:rgba(241,240,225,0.07); }
+  .mockup-chips{ display:flex;flex-wrap:wrap;gap:6px; }
+  .chip{
+    font-family:var(--mono);font-size:10px;letter-spacing:0.04em;
+    padding:4px 9px;border-radius:20px;
+    background:#1c1c24;border:1px solid rgba(241,240,225,0.09);
+    color:#6B6A62;
+  }
+  .chip.active{ background:rgba(80,99,133,0.2);border-color:rgba(124,147,184,0.3);color:#7c93b8; }
+  .mockup-footer{
+    padding:12px 16px;
+    border-top:1px solid rgba(241,240,225,0.07);
+    background:#101015;
+  }
+  .mockup-status{ display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:#6B6A62; }
+  .status-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#4ade80;
+    box-shadow:0 0 8px rgba(74,222,128,0.6);
+    animation:blink 2s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+  /* ring decorations */
+  .hero-rings{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .hero-rings span{
+    position:absolute;
+    top:50%; left:50%;
+    border-radius:50%;
+    border:1px solid rgba(80,99,133,0.12);
+    transform:translate(-50%,-50%);
+    animation:pulse-ring 6s ease-in-out infinite;
+  }
+  .hero-rings span:nth-child(1){ width:260px; height:260px; animation-delay:0s; }
+  .hero-rings span:nth-child(2){ width:340px; height:340px; animation-delay:1s; }
+  .hero-rings span:nth-child(3){ width:420px; height:420px; animation-delay:2s; border-color:rgba(80,99,133,0.07); }
+  @keyframes pulse-ring{
+    0%,100%{ opacity:0.6; transform:translate(-50%,-50%) scale(1); }
+    50%{ opacity:1; transform:translate(-50%,-50%) scale(1.03); }
   }
   .hero h1{
     font-size:clamp(40px,5.6vw,68px);
@@ -653,6 +748,8 @@
   @media(max-width:860px){
     .nav-links{display:none;}
     .hero{padding-top:112px;}
+    .hero-cols{grid-template-columns:1fr;}
+    .hero-visual{display:none;}
     .compare-col{padding:24px;}
   }
   @media(max-width:600px){
@@ -778,6 +875,7 @@
   <section class="hero">
 
     <div class="wrap">
+      <div class="hero-cols">
       <div class="hero-inner reveal in">
         <span class="eyebrow">For students · Chrome extension</span>
         <h1>NotebookLM, supercharged — <em>capture anything, import anywhere.</em></h1>
@@ -792,6 +890,54 @@
           </div>
           <p><strong>Free to install.</strong> No credit card required.</p>
         </div>
+      </div>
+
+      <div class="hero-visual reveal in">
+        <div class="hero-rings">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="hero-mockup">
+          <div class="mockup-header">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB" style="display:none">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <img src="/Users/I751746/Documents/Notebook LM/notebooklm-powerup/dist/icons/logo-transparent.png" style="width:28px;height:28px;border-radius:6px;object-fit:contain;">
+              <span style="font-family:var(--mono);font-size:12px;font-weight:700;color:#F1F0E1;letter-spacing:0.08em;">NORRA</span>
+            </div>
+            <div style="font-family:var(--mono);font-size:10px;color:#6B6A62;">v1.0.0</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-label">Current Notebook</div>
+            <div class="mockup-select">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#506385" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              <span>AI Research — Week 3</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6B6A62" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="mockup-actions">
+              <div class="mockup-btn-primary">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Add to Notebook
+              </div>
+              <div class="mockup-btn-ghost">New Notebook</div>
+            </div>
+            <div class="mockup-divider"></div>
+            <div class="mockup-label">Supported Sites</div>
+            <div class="mockup-chips">
+              <span class="chip active">ChatGPT</span>
+              <span class="chip active">Claude</span>
+              <span class="chip active">Gemini</span>
+              <span class="chip">Reddit</span>
+              <span class="chip">X / Twitter</span>
+              <span class="chip">LinkedIn</span>
+            </div>
+          </div>
+          <div class="mockup-footer">
+            <div class="mockup-status">
+              <span class="status-dot"></span>
+              <span>Ready to capture</span>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
 
       <div class="hero-panel reveal" id="heroPanel">
