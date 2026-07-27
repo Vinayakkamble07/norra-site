@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Norra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101015;
+    --bg-elevated:#16161c;
+    --bg-elevated-2:#1c1c24;
+    --slate:#506385;
+    --slate-light:#7c93b8;
+    --cream:#f1f0e1;
+    --text-dim:#9a9aa5;
+    --text-faint:#5c5c66;
+    --border:rgba(241,240,225,0.09);
+    --border-strong:rgba(241,240,225,0.16);
+    --mono:'JetBrains Mono', ui-monospace, monospace;
+    --sans:'Inter', -apple-system, sans-serif;
+    --radius-m:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--slate-light);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* NAV */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(16,16,21,0.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    max-width:800px;margin:0 auto;padding:0 32px;
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-weight:700;font-size:16px;letter-spacing:0.02em;color:var(--cream);}
+  .nav-back{font-family:var(--mono);font-size:13px;color:var(--text-dim);display:flex;align-items:center;gap:6px;transition:color .2s;}
+  .nav-back:hover{color:var(--cream);text-decoration:none;}
+  .nav-back svg{flex-shrink:0;}
+
+  /* CONTENT */
+  main{max-width:800px;margin:0 auto;padding:112px 32px 80px;}
+
+  .page-eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--slate-light);margin-bottom:16px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .page-eyebrow::before{content:'';width:14px;height:1px;background:var(--slate-light);}
+  h1{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-0.02em;line-height:1.08;margin-bottom:12px;}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--text-faint);margin-bottom:48px;}
+
+  .content h2{
+    font-size:20px;font-weight:700;letter-spacing:-0.01em;
+    margin:48px 0 14px;padding-top:48px;
+    border-top:1px solid var(--border);
+  }
+  .content h2:first-child{margin-top:0;border-top:none;padding-top:0;}
+  .content p{color:var(--text-dim);font-size:15px;margin-bottom:16px;line-height:1.75;}
+  .content p strong{color:var(--cream);font-weight:600;}
+  .content ul{
+    list-style:none;margin:0 0 20px;padding:0;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .content ul li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-size:15px;color:var(--text-dim);line-height:1.65;
+  }
+  .content ul li::before{
+    content:'—';
+    font-family:var(--mono);color:var(--slate-light);
+    flex-shrink:0;margin-top:2px;
+  }
+
+  .callout{
+    background:var(--bg-elevated);
+    border:1px solid var(--border-strong);
+    border-left:3px solid var(--slate-light);
+    border-radius:var(--radius-m);
+    padding:20px 24px;
+    margin:24px 0;
+  }
+  .callout p{margin:0;font-size:14px;}
+
+  .data-table{
+    width:100%;border-collapse:collapse;
+    margin:20px 0 28px;
+    font-size:14px;
+  }
+  .data-table th{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-faint);padding:10px 16px;
+    background:var(--bg-elevated-2);
+    border:1px solid var(--border);text-align:left;
+  }
+  .data-table td{
+    padding:12px 16px;
+    border:1px solid var(--border);
+    color:var(--text-dim);vertical-align:top;
+    line-height:1.55;
+  }
+  .data-table tr:hover td{background:var(--bg-elevated);}
+
+  .tag{
+    display:inline-block;
+    font-family:var(--mono);font-size:10px;letter-spacing:0.06em;
+    padding:3px 8px;border-radius:4px;
+    background:rgba(80,99,133,0.2);
+    border:1px solid rgba(124,147,184,0.25);
+    color:var(--slate-light);
+    white-space:nowrap;
+  }
+  .tag.green{background:rgba(80,133,99,0.2);border-color:rgba(124,184,147,0.25);color:#7cb893;}
+  .tag.red{background:rgba(133,80,80,0.2);border-color:rgba(184,124,124,0.25);color:#b87c7c;}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:32px;max-width:800px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:12px;
+  }
+  footer span{font-family:var(--mono);font-size:12px;color:var(--text-faint);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="nora-landing.html" class="logo">NORRA</a>
+    <a href="nora-landing.html" class="nav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to home
+    </a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-eyebrow">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated: July 27, 2026 &nbsp;·&nbsp; Applies to the Norra Chrome extension</p>
+
+  <div class="content">
+
+    <h2>Overview</h2>
+    <p>Norra is a Chrome extension that enhances Google NotebookLM by adding AI chat capture, bulk URL import, notebook management, and a prompt library. This policy explains what data Norra accesses, what it does with that data, and what it never does.</p>
+    <div class="callout">
+      <p><strong>Short version:</strong> Norra does not collect, store on any server, or sell your personal data. Everything stays on your device or goes directly to Google's NotebookLM — using your own Google account, just as if you had done it manually.</p>
+    </div>
+
+    <h2>Who we are</h2>
+    <p>Norra is an independent Chrome extension. It is not affiliated with, endorsed by, or in any way connected to Google LLC or the NotebookLM product. "NotebookLM" is a trademark of Google LLC.</p>
+    <p>For questions about this policy, contact: <a href="mailto:privacy@norra.app">privacy@norra.app</a></p>
+
+    <h2>What data Norra accesses</h2>
+    <p>Norra reads data from your browser solely to perform the functions you trigger. The table below describes each category:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Why it's accessed</th>
+          <th>Stored locally?</th>
+          <th>Sent to Norra servers?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI chat conversation text<br><span style="font-size:12px;color:var(--text-faint)">ChatGPT, Claude, Gemini, Mistral, Perplexity</span></td>
+          <td>To format and send the conversation as a NotebookLM source</td>
+          <td><span class="tag red">No</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+        <tr>
+          <td>Web page content<br><span style="font-size:12px;color:var(--text-faint)">Reddit, Twitter/X, LinkedIn, bulk-imported URLs</span></td>
+          <td>To extract readable text and add it as a NotebookLM source</td>
+          <td><span class="tag red">No</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+        <tr>
+          <td>Google account email</td>
+          <td>To identify which Google account is active in NotebookLM (for multi-account support)</td>
+          <td><span class="tag green">Yes — device only</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+        <tr>
+          <td>NotebookLM notebook list &amp; IDs</td>
+          <td>To populate the notebook selector in the popup and dashboard</td>
+          <td><span class="tag green">Yes — device only (cache)</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+        <tr>
+          <td>Saved prompts</td>
+          <td>Prompts you manually save to the prompt library</td>
+          <td><span class="tag green">Yes — device only</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+        <tr>
+          <td>NotebookLM session tokens (CSRF, session ID)</td>
+          <td>Required to authenticate API calls to NotebookLM on your behalf</td>
+          <td><span class="tag red">No</span></td>
+          <td><span class="tag red">Never</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What data Norra sends — and where</h2>
+    <p>When you click "Send to NotebookLM", Norra formats the captured content and sends it directly to:</p>
+    <ul>
+      <li><strong>notebooklm.google.com</strong> — All source additions, notebook creation/deletion, and notebook listing happen via NotebookLM's own internal API, authenticated with your existing Google session. This is identical to what happens when you add a source manually.</li>
+    </ul>
+    <p>No data is routed through Norra's infrastructure. There are no Norra servers involved in the capture or import flow.</p>
+
+    <h2>Local storage</h2>
+    <p>Norra uses <strong>chrome.storage.local</strong> to persist the following on your device:</p>
+    <ul>
+      <li>Your Google account email (to detect account switches)</li>
+      <li>Your cached notebook list and the last-selected notebook ID</li>
+      <li>Your prompt library (prompts you explicitly save)</li>
+    </ul>
+    <p>This data never leaves your device. You can clear it at any time by removing and reinstalling the extension, or by using Chrome's extension storage settings.</p>
+
+    <h2>Permissions explained</h2>
+    <p>Norra requests the following Chrome permissions and uses them only as described:</p>
+    <ul>
+      <li><strong>storage</strong> — Save your prompt library, notebook cache, and account email locally on your device.</li>
+      <li><strong>activeTab</strong> — Read the current tab's content when you click "Send to NotebookLM".</li>
+      <li><strong>scripting</strong> — Inject the capture button on supported chat sites and extract conversation text.</li>
+      <li><strong>tabs</strong> — Identify which tab has NotebookLM open, and open NotebookLM if needed.</li>
+      <li><strong>downloads</strong> — Allow notebook export to be saved as a file to your device.</li>
+      <li><strong>Host permission: notebooklm.google.com</strong> — Make API calls to NotebookLM on your behalf.</li>
+      <li><strong>Host permission: &lt;all_urls&gt;</strong> — Run the capture content script on any site so the "Send to NotebookLM" button can appear on supported sites (ChatGPT, Claude, Reddit, etc.). The script only activates on the handful of sites with a recognized adapter; it silently does nothing everywhere else.</li>
+    </ul>
+
+    <h2>What Norra never does</h2>
+    <ul>
+      <li>Norra never transmits your data to any third-party analytics, advertising, or tracking service.</li>
+      <li>Norra never reads your browser history, cookies, passwords, or any content beyond what you explicitly trigger it to capture.</li>
+      <li>Norra never stores captured chat conversations or web content — they are passed through in memory and sent directly to NotebookLM.</li>
+      <li>Norra never sells, shares, or monetizes any user data in any form.</li>
+      <li>Norra never runs in the background to monitor your browsing — the content script only performs work when you interact with the extension.</li>
+    </ul>
+
+    <h2>Children's privacy</h2>
+    <p>Norra is not directed at children under 13. We do not knowingly collect any personal information from children under 13. If you believe a child has used the extension in a way that results in data collection, please contact us at <a href="mailto:privacy@norra.app">privacy@norra.app</a>.</p>
+
+    <h2>Third-party services</h2>
+    <p>Norra interacts only with Google's NotebookLM service. Your use of NotebookLM is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. Norra has no control over Google's data practices.</p>
+    <p>The landing page (norra.app) loads fonts from Google Fonts. This is subject to Google's standard web font privacy practices.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we make material changes to this policy, we will update the "Last updated" date at the top and, where appropriate, provide notice via the Chrome Web Store listing. Continued use of Norra after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>Contact</h2>
+    <p>Questions, requests, or concerns about this privacy policy:</p>
+    <ul>
+      <li>Email: <a href="mailto:privacy@norra.app">privacy@norra.app</a></li>
+    </ul>
+
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Norra. All rights reserved.</span>
+  <span>Not affiliated with Google or NotebookLM.</span>
+</footer>
+
+</body>
+</html>
