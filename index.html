@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Norra — Supercharge Google NotebookLM</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -900,7 +901,7 @@
           <div class="mockup-header">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB" style="display:none">
             <div style="display:flex;align-items:center;gap:8px;">
-              <img src="/Users/I751746/Documents/Notebook LM/notebooklm-powerup/dist/icons/logo-transparent.png" style="width:28px;height:28px;border-radius:6px;object-fit:contain;">
+              <img src="logo.png" style="width:28px;height:28px;border-radius:6px;object-fit:contain;">
               <span style="font-family:var(--mono);font-size:12px;font-weight:700;color:#F1F0E1;letter-spacing:0.08em;">NORRA</span>
             </div>
             <div style="font-family:var(--mono);font-size:10px;color:#6B6A62;">v1.0.0</div>
@@ -1400,17 +1401,11 @@
     });
   }
 
-  // privacy modal
-  const ppOverlay = document.getElementById('ppOverlay');
-  const ppClose   = document.getElementById('ppClose');
+  // privacy — link to dedicated page
   const ppTrigger = document.getElementById('ppTrigger');
   const ppTriggerNav = document.getElementById('ppTriggerNav');
-  function openPP(e){ e.preventDefault(); ppOverlay.classList.add('open'); document.body.style.overflow='hidden'; }
-  function closePP(){ ppOverlay.classList.remove('open'); document.body.style.overflow=''; }
-  ppTrigger.addEventListener('click', openPP);
-  ppTriggerNav.addEventListener('click', openPP);
-  ppClose.addEventListener('click', closePP);
-  ppOverlay.addEventListener('click', e=>{ if(e.target===ppOverlay) closePP(); });
+  if (ppTrigger) ppTrigger.addEventListener('click', e=>{ e.preventDefault(); window.location.href='privacy-policy.html'; });
+  if (ppTriggerNav) ppTriggerNav.addEventListener('click', e=>{ e.preventDefault(); window.location.href='privacy-policy.html'; });
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePP(); });
 </script>
 <!-- ========== PRIVACY POLICY MODAL ========== -->
