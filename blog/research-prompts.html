@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Five prompts that make research summaries sharper — Norra Blog</title>
+  <meta name="description" content="Use focused NotebookLM prompts to move from a pile of sources to clear takeaways, decisions, and next steps. Five templates that make summaries sharper.">
+  <link rel="canonical" href="https://norra-notebooklm.com/blog/research-prompts.html">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Five prompts that make research summaries sharper",
+    "description": "Use focused NotebookLM prompts to move from a pile of sources to clear takeaways, decisions, and next steps.",
+    "author": { "@type": "Organization", "name": "Norra" },
+    "publisher": { "@type": "Organization", "name": "Norra" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #101015;
+      --bg-elevated: #16161c;
+      --slate-light: #7c93b8;
+      --cream: #f1f0e1;
+      --text-dim: #9a9aa5;
+      --text-faint: #5c5c66;
+      --border: rgba(241,240,225,0.09);
+      --border-strong: rgba(241,240,225,0.16);
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(16,16,21,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav, main, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    nav { max-width: 1180px; }
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .logo img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta { display: flex; align-items: center; }
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .btn:hover { color: var(--bg); opacity: .9; }
+    main { padding-top: 80px; padding-bottom: 80px; }
+    .eyebrow {
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .article-meta {
+      display: flex;
+      gap: 16px;
+      margin: 14px 0 24px;
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 8px 0 0;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+    .body p {
+      max-width: 700px;
+      margin: 0 0 20px;
+      color: var(--text-dim);
+      font-size: 16px;
+    }
+    .body strong { color: var(--cream); }
+    .prompt-block {
+      max-width: 700px;
+      margin: 0 0 20px;
+      padding: 16px 20px;
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--slate-light);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 48px;
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .back-link:hover { color: var(--cream); }
+    footer {
+      padding-top: 28px;
+      padding-bottom: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--text-faint);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    @media (max-width: 600px) {
+      nav, main, footer { padding-left: 20px; padding-right: 20px; }
+      main { padding-top: 56px; }
+      .nav-links { display: none; }
+      .nav-cta { margin-left: auto; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">
+        <img src="../logo.png" alt="">
+        <span>NORRA</span>
+      </a>
+      <div class="nav-links">
+        <a href="../features.html">Features</a>
+        <a href="../index.html#automation">How it works</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../index.html#reviews">Reviews</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn" href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank" rel="noopener">Add to Chrome, Free</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="eyebrow">NotebookLM · 4 min read</div>
+    <h1>Five prompts that make research summaries sharper</h1>
+    <div class="article-meta"><span>From the Norra desk</span></div>
+
+    <div class="body">
+      <p>A useful summary should do more than shorten a document. Ask NotebookLM to separate established facts from assumptions, compare conflicting sources, and call out what the sources do not answer.</p>
+
+      <p><strong>1. Separate facts from assumptions</strong></p>
+      <div class="prompt-block">"List the claims in these sources. For each, say whether it is a confirmed finding, an author's assumption, or an open question."</div>
+
+      <p><strong>2. Surface conflicts</strong></p>
+      <div class="prompt-block">"Where do these sources disagree? Summarize each conflicting position and what might explain the difference."</div>
+
+      <p><strong>3. Find the gaps</strong></p>
+      <div class="prompt-block">"What important questions do these sources not answer? What would I still need to look up?"</div>
+
+      <p><strong>4. One-paragraph synthesis</strong></p>
+      <div class="prompt-block">"In one paragraph, what is the strongest conclusion I can draw from these sources combined?"</div>
+
+      <p><strong>5. The decision-maker summary</strong></p>
+      <div class="prompt-block">"Summarize this for a decision-maker. Include the recommendation, the evidence behind it, the main risk, and one question that still needs an answer."</div>
+
+      <p>Save the prompts that consistently produce useful results in your Norra prompt library. A strong template saves time and makes your best thinking repeatable — you run the same prompt against new sources and get a consistent, comparable output every time.</p>
+      <a class="back-link" href="../blog.html">← Back to all articles</a>
+    </div>
+  </main>
+
+  <footer>Norra: Supercharge Google NotebookLM.</footer>
+</body>
+</html>
