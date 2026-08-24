@@ -54,7 +54,11 @@
   .nav-links a:hover{color:var(--cream);text-decoration:none;}
   .nav-cta{display:flex;align-items:center;}
   .btn{font-family:var(--mono);font-size:12px;font-weight:600;padding:10px 16px;border-radius:8px;background:var(--cream);color:var(--bg);white-space:nowrap;}
-  .btn:hover{opacity:.9;text-decoration:none;}
+  .btn{transition:transform 150ms cubic-bezier(0.34,1.56,0.64,1),opacity 150ms ease;}
+  .btn:hover{opacity:.9;text-decoration:none;transform:translateY(-1px);}
+  .btn:active{transform:scale(0.95);opacity:0.8;}
+  @media(prefers-reduced-motion:reduce){*{transition:opacity 200ms ease !important;animation:none !important;}.btn{transform:none !important;}}
+  @media(prefers-reduced-transparency:reduce){header{background:#101015;backdrop-filter:none;}}
 
   /* CONTENT */
   main{max-width:800px;margin:0 auto;padding:112px 32px 80px;}

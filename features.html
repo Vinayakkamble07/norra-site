@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features — Norra: Power Tools for Google NotebookLM</title>
+  <meta name="description" content="Capture AI chats from ChatGPT, Claude and Gemini, bulk-import URLs, manage notebooks, save prompts, capture web pages, and export — all from your browser.">
+  <link rel="canonical" href="https://norra-notebooklm.com/features.html">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #101015;
+      --bg-elevated: #16161c;
+      --slate-light: #7c93b8;
+      --cream: #f1f0e1;
+      --text-dim: #9a9aa5;
+      --text-faint: #5c5c66;
+      --border: rgba(241,240,225,0.09);
+      --border-strong: rgba(241,240,225,0.16);
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(16,16,21,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav, main, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    nav { max-width: 1180px; }
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .logo img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta { display: flex; align-items: center; }
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .btn {
+      transition: transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 150ms ease;
+    }
+    .btn:hover { color: var(--bg); opacity: .9; transform: translateY(-1px); }
+    .btn:active { transform: scale(0.95); opacity: 0.8; }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: opacity 200ms ease !important; animation: none !important; }
+      .btn { transform: none !important; }
+    }
+    @media (prefers-reduced-transparency: reduce) {
+      header { background: #101015; backdrop-filter: none; }
+    }
+    main { padding-top: 80px; padding-bottom: 80px; }
+    .eyebrow {
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 680px;
+      margin: 14px 0 48px;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .feature-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 28px 32px;
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .feature-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.4);
+    }
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+    .feature-card h2 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      line-height: 1.3;
+    }
+    .feature-card p {
+      margin: 0;
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    footer {
+      padding-top: 28px;
+      padding-bottom: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--text-faint);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    @media (max-width: 600px) {
+      nav, main, footer { padding-left: 20px; padding-right: 20px; }
+      main { padding-top: 56px; }
+      .nav-links { display: none; }
+      .nav-cta { margin-left: auto; margin-right: 16px; }
+    }
+
+    /* reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px) scale(0.99);
+      transition: opacity .6s cubic-bezier(0.22, 1, 0.36, 1), transform .6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0) scale(1); }
+    .feature-grid .feature-card:nth-child(1) { transition-delay: 0s; }
+    .feature-grid .feature-card:nth-child(2) { transition-delay: .07s; }
+    .feature-grid .feature-card:nth-child(3) { transition-delay: .14s; }
+    .feature-grid .feature-card:nth-child(4) { transition-delay: .21s; }
+    .feature-grid .feature-card:nth-child(5) { transition-delay: .28s; }
+    .feature-grid .feature-card:nth-child(6) { transition-delay: .35s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="index.html">
+        <img src="logo.png" alt="">
+        <span>NORRA</span>
+      </a>
+      <div class="nav-links">
+        <a href="features.html">Features</a>
+        <a href="index.html#automation">How it works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="index.html#reviews">Reviews</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn" href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank" rel="noopener">Add to Chrome, Free</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="eyebrow reveal in">What you get</div>
+    <h1 class="reveal in" style="transition-delay:.05s">Everything NotebookLM was missing.</h1>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">💬</div>
+        <h2>AI Chat Capture</h2>
+        <p>Save conversations from ChatGPT, Claude, Gemini, Perplexity, and Mistral directly to any NotebookLM notebook in one click.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔗</div>
+        <h2>Bulk URL Import</h2>
+        <p>Paste a list of URLs, choose a notebook, and import all pages at once. No more adding sources one by one.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📚</div>
+        <h2>Notebook Dashboard</h2>
+        <p>See all your NotebookLM notebooks in one place, switch between them, and send sources to the right one without leaving the page you're on.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⚡</div>
+        <h2>Prompt Library</h2>
+        <p>Save your best NotebookLM prompts as templates. Run them again in any notebook with a single click — consistent results every time.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌐</div>
+        <h2>Web Capture</h2>
+        <p>Send any web page, Reddit thread, Twitter/X thread, or LinkedIn post to your notebook instantly. Capture the moment you find it.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📤</div>
+        <h2>Export Notebooks</h2>
+        <p>Export your NotebookLM sources and notes for backup, sharing, or use in other tools. Your research stays portable.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>Norra: Supercharge Google NotebookLM.</footer>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+    setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 1200);
+  </script>
+</body>
+</html>

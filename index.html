@@ -4,7 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Norra: Supercharge Google NotebookLM</title>
+  <title>Norra: Power Tools for Gemini NotebookLM</title>
+  <meta name="description" content="Capture AI chats, bulk-import URLs, manage notebooks and prompts — all from your browser. Free Chrome extension for Gemini NotebookLM.">
+  <meta property="og:title" content="Norra: Power Tools for Gemini NotebookLM">
+  <meta property="og:description" content="Capture AI chats, bulk-import URLs, manage notebooks and prompts — all from your browser.">
+  <meta property="og:image" content="https://norra-notebooklm.com/og-image.png">
+  <meta property="og:url" content="https://norra-notebooklm.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Norra: Power Tools for Gemini NotebookLM">
+  <meta name="twitter:description" content="Capture AI chats, bulk-import URLs, manage notebooks and prompts — all from your browser.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1470,7 +1479,7 @@
       background: rgba(124, 147, 184, 0.2);
     }
 
-    .f-card h4 {
+    .f-card h3 {
       font-size: 17px;
       font-weight: 700;
       margin-bottom: 9px;
@@ -1646,7 +1655,7 @@
       z-index: 2;
     }
 
-    .step h4 {
+    .step h3 {
       font-size: 18px;
       margin-bottom: 8px;
     }
@@ -1728,6 +1737,89 @@
       color: var(--cream);
       display: block;
       font-size: 13.5px;
+    }
+
+    /* CWS proof block */
+    .cws-proof {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .cws-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 28px 32px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--cream);
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .cws-card:hover {
+      border-color: var(--slate-light);
+      box-shadow: 0 8px 32px -12px rgba(0,0,0,0.5);
+    }
+    .cws-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--slate-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .cws-stars {
+      font-size: 20px;
+      color: #f1c40f;
+      letter-spacing: 2px;
+    }
+    .cws-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .cws-sub {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+    }
+    .cws-action {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-light);
+      margin-top: 4px;
+    }
+    .cws-features {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 24px 28px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .cws-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+    .cws-check {
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    @media (max-width: 700px) {
+      .cws-proof { grid-template-columns: 1fr; }
     }
 
     /* ---------- BLOG ---------- */
@@ -1979,7 +2071,7 @@
       font-weight: 700;
     }
 
-    .price-card h4 {
+    .price-card h3 {
       font-size: 15px;
       font-family: var(--mono);
       text-transform: uppercase;
@@ -2178,16 +2270,16 @@
       color: var(--text-faint);
     }
 
-    /* reveal animation */
+    /* reveal animation — spring feel cubic-bezier */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s var(--ease), transform .7s var(--ease);
+      transform: translateY(20px) scale(0.99);
+      transition: opacity .6s cubic-bezier(0.22, 1, 0.36, 1), transform .6s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .reveal.in {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .feature-grid .f-card:nth-child(1) {
@@ -2252,6 +2344,21 @@
 
     .pricing-grid .price-card:nth-child(3) {
       transition-delay: .2s;
+    }
+
+    /* blog card stagger */
+    #blog .blog-card:nth-child(1) { transition-delay: 0s; }
+    #blog .blog-card:nth-child(2) { transition-delay: .08s; }
+    #blog .blog-card:nth-child(3) { transition-delay: .16s; }
+
+    /* hero panel smooth spring-back */
+    .hero-panel {
+      transition: transform .5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow .5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* faq accordion smooth height */
+    .faq-a {
+      transition: max-height .4s cubic-bezier(0.22, 1, 0.36, 1), opacity .3s ease;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -2578,12 +2685,12 @@
         <span>NORRA</span>
       </a>
       <div class="nav-links">
-        <a href="#features">Features</a>
+        <a href="features.html">Features</a>
         <a href="#automation">How it works</a>
-        <a href="#pricing">Pricing</a>
+        <a href="pricing.html">Pricing</a>
         <a href="#reviews">Reviews</a>
-        <a href="#faq">FAQ</a>
-        <a href="#blog">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
         <a href="#" id="ppTriggerNav">Privacy</a>
       </div>
       <div class="nav-cta">
@@ -2601,10 +2708,10 @@
       <div class="wrap">
         <div class="hero-cols">
           <div class="hero-inner reveal in">
-            <span class="eyebrow">For students · Chrome extension</span>
-            <h1>NotebookLM, supercharged: <em>capture anything, import anywhere.</em></h1>
+            <span class="eyebrow">Chrome extension · Gemini NotebookLM</span>
+            <h1>Power tools for <em>Gemini NotebookLM.</em></h1>
             <p class="lede">Norra adds the missing layer to NotebookLM: save AI chats from any site, bulk-import URLs as
-              sources, manage your prompt library, and export notebooks, all without leaving your browser.</p>
+              sources, manage all your notebooks, and save prompt templates — all without leaving your browser.</p>
             <div class="hero-ctas">
               <a href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank"
                 class="btn btn-primary btn-lg">Add to Chrome, Free</a>
@@ -2660,7 +2767,7 @@
               <div class="mockup-bottom-nav">
                 <div><b>⇧</b><span>Bulk import</span></div>
                 <div class="active"><b>▣</b><span>Notebooks</span></div>
-                <div><b>♧</b><span>Podcasts</span></div>
+                <div><b>✎</b><span>Prompts</span></div>
                 <div><b>▦</b><span>Dashboard</span></div>
               </div>
             </div>
@@ -2677,8 +2784,8 @@
               <div class="dashboard-kicker">Tools</div>
               <div class="dashboard-nav-item active">↥ <strong>Bulk Import</strong></div>
               <div class="dashboard-nav-item">▣ <span>Notebooks</span></div>
-              <div class="dashboard-nav-item">♧ <span>Podcasts</span></div>
-              <div class="dashboard-nav-item">▦ <span>Workflow</span></div>
+              <div class="dashboard-nav-item">✎ <span>Prompts</span></div>
+              <div class="dashboard-nav-item">↗ <span>Capture</span></div>
             </aside>
             <div class="dashboard-main">
               <div class="dashboard-toolbar">
@@ -2772,53 +2879,41 @@
         <div class="feature-grid">
           <div class="f-card reveal">
             <div class="f-icon">⬇</div>
-            <h4>AI chat capture</h4>
+            <h3>AI chat capture</h3>
             <p>A floating button on ChatGPT, Claude, Gemini, Perplexity, and Mistral sends your conversation straight
               into the right notebook as a source, with no copy-paste.</p>
           </div>
           <div class="f-card reveal">
             <div class="f-icon">▦</div>
-            <h4>Bulk URL import</h4>
+            <h3>Bulk URL import</h3>
             <p>Paste a list of URLs, including articles, docs, and research pages, and Norra adds all of them to NotebookLM in one
               shot. No clicking through one at a time.</p>
           </div>
           <div class="f-card reveal">
             <div class="f-icon">◧</div>
-            <h4>Notebook dashboard</h4>
+            <h3>Notebook dashboard</h3>
             <p>See all your notebooks in one searchable view. Rename, delete, create new ones, and jump directly to any
               notebook without hunting through the NotebookLM UI.</p>
           </div>
           <div class="f-card reveal">
             <div class="f-icon">✎</div>
-            <h4>Prompt library</h4>
+            <h3>Prompt library</h3>
             <p>Save the prompts that actually get you good results. Fire them off in one click next time instead of
               rewriting from memory every session.</p>
           </div>
           <div class="f-card reveal">
             <div class="f-icon">↗</div>
-            <h4>Web capture</h4>
+            <h3>Web capture</h3>
             <p>Grab Reddit threads, X posts, and LinkedIn articles as sources. The same "Send to NotebookLM" button
               appears wherever you're reading.</p>
           </div>
           <div class="f-card reveal">
-            <div class="f-icon">⌕</div>
-            <h4>Export notebooks</h4>
-            <p>Export any notebook's content to Markdown for use in Obsidian, Notion, or anywhere else. Your data stays
-              yours.</p>
+            <div class="f-icon">◎</div>
+            <h3>Built-in prompt assistant</h3>
+            <p>A curated library of ready-to-use prompts — Summarize, Quiz Me, Find Gaps, and more — organised by intent. One click drops them straight into the NotebookLM chat box.</p>
           </div>
         </div>
 
-        <div class="cmd-demo reveal">
-          <div class="cmd-box">
-            Search notebooks and saved prompts<span class="cmd-cursor"></span>
-            <span class="k">⌘K</span>
-          </div>
-          <div class="cmd-results">
-            <div>Research Q3, Competitive analysis thread <span>notebook</span></div>
-            <div>"Summarize this as bullet points for a senior audience" <span>prompt</span></div>
-            <div>Product strategy, Claude chat 2026-07-20 <span>captured chat</span></div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -2872,21 +2967,20 @@
         <div class="steps">
           <div class="step reveal">
             <div class="step-num">01</div>
-            <h4>Install &amp; sign in</h4>
+            <h3>Install &amp; sign in</h3>
             <p>Add Norra to Chrome, open NotebookLM once, and Norra detects your account automatically. No manual setup.
             </p>
           </div>
           <div class="step reveal">
             <div class="step-num">02</div>
-            <h4>Capture as you browse</h4>
+            <h3>Capture as you browse</h3>
             <p>Click "Send to NotebookLM" on any AI chat or supported site. Pick your target notebook in the popup,
               done in under 5 seconds.</p>
           </div>
           <div class="step reveal">
             <div class="step-num">03</div>
-            <h4>Manage &amp; export</h4>
-            <p>Use the Norra dashboard to view all notebooks, save reusable prompts, bulk-import URLs, and export when
-              you need the content elsewhere.</p>
+            <h3>Manage &amp; reuse</h3>
+            <p>Use the Norra dashboard to view all notebooks, save reusable prompts, bulk-import URLs, and fire built-in prompt templates in one click.</p>
           </div>
         </div>
       </div>
@@ -2896,40 +2990,37 @@
     <section id="reviews">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="eyebrow">Early users</span>
-          <h2>What people are saying.</h2>
+          <span class="eyebrow">Chrome Web Store</span>
+          <h2>Built for researchers who live in their browser.</h2>
+          <p>Free to install. No account required. No data leaves your browser.</p>
         </div>
 
-        <div class="t-grid">
-          <div class="t-card reveal">
-            <span class="t-stars">★★★★★</span>
-            <p>Finally, I can send a full ChatGPT conversation into NotebookLM with one click. No more copy-paste hell.
-              This should have been built into the product.</p>
-            <div class="t-who">
-              <div class="t-avatar">JK</div>
-              <span><strong>Jordan K.</strong>Product manager</span>
+        <div class="cws-proof reveal">
+          <a href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank" rel="noopener" class="cws-card">
+            <div class="cws-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#7c93b8" stroke-width="1.5"/><path d="M12 8v4l3 3" stroke="#7c93b8" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>Available on the Chrome Web Store</span>
             </div>
-          </div>
-          <div class="t-card reveal">
-            <span class="t-stars">★★★★★</span>
-            <p>The bulk URL import alone is worth it. I had 30 research links to add, and normally that takes 20 minutes of
-              clicking. Norra did it in one paste.</p>
-            <div class="t-who">
-              <div class="t-avatar">MP</div>
-              <span><strong>Maya P.</strong>Researcher</span>
+            <div class="cws-stars">★★★★★</div>
+            <div class="cws-name">Norra: Power Tools for Gemini NotebookLM</div>
+            <div class="cws-sub">Free · No login required · Works with your existing Google account</div>
+            <div class="cws-action">Add to Chrome, Free →</div>
+          </a>
+          <div class="cws-features">
+            <div class="cws-feat">
+              <span class="cws-check">✓</span>
+              <span>Captures chats from ChatGPT, Claude, Gemini, Mistral & Perplexity</span>
             </div>
-          </div>
-          <div class="t-card reveal">
-            <span class="t-stars">★★★★★</span>
-            <p>The prompt library is underrated. I've built up a set of analysis prompts I reuse every week.
-              Game-changer for anyone doing repetitive research workflows.</p>
-            <div class="t-who">
-              <div class="t-avatar">SR</div>
-              <span><strong>Sam R.</strong>Strategy consultant</span>
+            <div class="cws-feat">
+              <span class="cws-check">✓</span>
+              <span>Bulk-imports URLs and open browser tabs in one shot</span>
+            </div>
+            <div class="cws-feat">
+              <span class="cws-check">✓</span>
+              <span>No servers. Nothing stored outside your own browser and Google account</span>
             </div>
           </div>
         </div>
-        <p class="placeholder-note">Sample quotes for layout. Swap in real reviews once Norra ships.</p>
       </div>
     </section>
 
@@ -2943,7 +3034,7 @@
 
         <div class="pricing-grid">
           <div class="price-card reveal">
-            <h4>Free</h4>
+            <h3>Free</h3>
             <div class="price">$0<small> /month</small></div>
             <p class="price-note">Everything you need to get started.</p>
             <ul>
@@ -2959,7 +3050,7 @@
 
           <div class="price-card pro reveal">
             <span class="pop-badge">Coming soon</span>
-            <h4>Pro</h4>
+            <h3>Pro</h3>
             <div class="price"><span class="price-num" data-monthly="$5" data-yearly="$4">$5</span><small
                 class="price-suffix"> /month</small></div>
             <p class="price-note" data-monthly-note="Billed monthly" data-yearly-note="Billed $48/year">Billed monthly
@@ -3036,7 +3127,7 @@
             </div>
             <h3>Build a research workflow that actually sticks</h3>
             <p>A simple system for capturing sources, organizing context, and getting more value from every NotebookLM session.</p>
-            <a class="blog-link" href="blog.html#research-workflow">Read article <span aria-hidden="true">→</span></a>
+            <a class="blog-link" href="blog/research-workflow.html">Read article <span aria-hidden="true">→</span></a>
           </article>
           <article class="blog-card reveal">
             <div class="blog-meta">
@@ -3045,7 +3136,7 @@
             </div>
             <h3>Five prompts that make research summaries sharper</h3>
             <p>Use focused prompts to move from a pile of sources to clear takeaways, decisions, and next steps.</p>
-            <a class="blog-link" href="blog.html#research-prompts">Read article <span aria-hidden="true">→</span></a>
+            <a class="blog-link" href="blog/research-prompts.html">Read article <span aria-hidden="true">→</span></a>
           </article>
           <article class="blog-card reveal">
             <div class="blog-meta">
@@ -3054,7 +3145,7 @@
             </div>
             <h3>Why your best ideas are hiding in open tabs</h3>
             <p>Turn conversations, articles, and scattered notes into a research library you can return to anytime.</p>
-            <a class="blog-link" href="blog.html#open-tabs">Read article <span aria-hidden="true">→</span></a>
+            <a class="blog-link" href="blog/open-tabs.html">Read article <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -3090,20 +3181,20 @@
               alt="Norra logo">
             <span>NORRA</span>
           </a>
-          <p>Supercharge Google NotebookLM: capture AI chats, bulk-import sources, manage notebooks, and save prompt
-            templates, all from your browser.</p>
+          <p>Power tools for Gemini NotebookLM: capture AI chats, bulk-import sources, manage notebooks, and save prompt
+            templates — all from your browser.</p>
         </div>
         <div class="footer-cols">
           <div class="footer-col">
             <h5>Product</h5>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
+            <a href="features.html">Features</a>
+            <a href="pricing.html">Pricing</a>
             <a href="#how">How it works</a>
           </div>
           <div class="footer-col">
             <h5>Company</h5>
             <a href="#">About</a>
-            <a href="#blog">Blog</a>
+            <a href="blog.html">Blog</a>
             <a href="#">Contact</a>
           </div>
           <div class="footer-col">
@@ -3199,7 +3290,9 @@
           heroPanel.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
         hero.addEventListener('mouseleave', () => {
+          heroPanel.style.transition = 'transform .6s cubic-bezier(0.22, 1, 0.36, 1)';
           heroPanel.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+          setTimeout(() => heroPanel.style.transition = '', 650);
         });
       }
     }
