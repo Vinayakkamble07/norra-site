@@ -176,7 +176,7 @@
 <main>
   <div class="page-eyebrow">Legal</div>
   <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: July 27, 2026 &nbsp;·&nbsp; Applies to the Norra Chrome extension</p>
+  <p class="meta">Last updated: August 27, 2026 &nbsp;·&nbsp; Applies to the Norra Chrome extension</p>
 
   <div class="content">
 
@@ -239,8 +239,30 @@
           <td><span class="tag red">No</span></td>
           <td><span class="tag red">Never</span></td>
         </tr>
+        <tr>
+          <td>Anonymous usage events<br><span style="font-size:12px;color:var(--text-faint)">e.g. "bulk_import_completed", "workflow_run"</span></td>
+          <td>To understand which features are used most so we can improve Norra</td>
+          <td><span class="tag red">No</span></td>
+          <td><span class="tag green">Yes — PostHog only (see below)</span></td>
+        </tr>
+        <tr>
+          <td>Random device ID (analytics only)</td>
+          <td>A randomly generated UUID stored locally, used to deduplicate analytics events. Cannot be traced back to you.</td>
+          <td><span class="tag green">Yes, device only</span></td>
+          <td><span class="tag green">Yes — PostHog only (anonymous)</span></td>
+        </tr>
       </tbody>
     </table>
+
+    <h2>Anonymous analytics</h2>
+    <p>Norra sends anonymous usage events to <strong>PostHog</strong> (US Cloud, posthog.com) to help us understand which features are most useful. Here is exactly what is and is not sent:</p>
+    <ul>
+      <li><strong>What is sent:</strong> Event names (e.g. <code style="font-family:var(--mono);font-size:12px;color:var(--slate-light)">bulk_import_completed</code>), a count of items processed, the hostname of a page you captured from (e.g. <code style="font-family:var(--mono);font-size:12px;color:var(--slate-light)">chatgpt.com</code>), the extension version, and a randomly generated anonymous device ID.</li>
+      <li><strong>What is never sent:</strong> Your Google account email, notebook titles or IDs, the content of any captured conversation or web page, full URLs, or any information that could identify you personally.</li>
+      <li><strong>The device ID</strong> is a random UUID generated locally and stored in <code style="font-family:var(--mono);font-size:12px;color:var(--slate-light)">chrome.storage.local</code>. It is not tied to your Google account, browser profile, or any other identifier.</li>
+      <li>Analytics events are <strong>fire-and-forget</strong> — they never delay or block any action you take in the extension.</li>
+    </ul>
+    <p>PostHog's privacy policy is available at <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.</p>
 
     <h2>What data Norra sends, and where</h2>
     <p>When you click "Send to NotebookLM", Norra formats the captured content and sends it directly to:</p>
@@ -272,7 +294,7 @@
 
     <h2>What Norra never does</h2>
     <ul>
-      <li>Norra never transmits your data to any third-party analytics, advertising, or tracking service.</li>
+      <li>Norra never transmits your personal data to any third-party service. The only data sent externally is anonymous, non-reversible usage events to PostHog — no names, emails, content, or URLs are included (see "Anonymous analytics" above).</li>
       <li>Norra never reads your browser history, cookies, passwords, or any content beyond what you explicitly trigger it to capture.</li>
       <li>Norra never stores captured chat conversations or web content. They are passed through in memory and sent directly to NotebookLM.</li>
       <li>Norra never sells, shares, or monetizes any user data in any form.</li>
@@ -283,7 +305,11 @@
     <p>Norra is not directed at children under 13. We do not knowingly collect any personal information from children under 13. If you believe a child has used the extension in a way that results in data collection, please contact us at <a href="mailto:privacy@norra.app">privacy@norra.app</a>.</p>
 
     <h2>Third-party services</h2>
-    <p>Norra interacts only with Google's NotebookLM service. Your use of NotebookLM is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>. Norra has no control over Google's data practices.</p>
+    <p>Norra interacts with the following third-party services:</p>
+    <ul>
+      <li><strong>Google NotebookLM:</strong> All source imports and notebook operations go directly to NotebookLM using your own Google session. Governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      <li><strong>PostHog (analytics):</strong> Anonymous usage events are sent to PostHog US Cloud. No personal data is included. Governed by <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog's Privacy Policy</a>.</li>
+    </ul>
     <p>The landing page (norra.app) loads fonts from Google Fonts. This is subject to Google's standard web font privacy practices.</p>
 
     <h2>Changes to this policy</h2>
