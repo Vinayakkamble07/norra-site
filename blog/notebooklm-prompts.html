@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 Useful NotebookLM Prompts You Can Reuse — Norra Blog</title>
+  <meta name="description" content="30 reusable NotebookLM prompts for research, studying, source comparison, summaries, flashcards, quizzes, writing, and decision-making.">
+  <link rel="canonical" href="https://norra-notebooklm.com/blog/notebooklm-prompts.html">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "30 Useful NotebookLM Prompts You Can Reuse",
+    "description": "30 reusable NotebookLM prompts for research, studying, source comparison, summaries, flashcards, quizzes, writing, and decision-making.",
+    "author": { "@type": "Organization", "name": "Norra" },
+    "publisher": { "@type": "Organization", "name": "Norra" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #101015;
+      --bg-elevated: #16161c;
+      --slate-light: #7c93b8;
+      --cream: #f1f0e1;
+      --text-dim: #9a9aa5;
+      --text-faint: #5c5c66;
+      --border: rgba(241,240,225,0.09);
+      --border-strong: rgba(241,240,225,0.16);
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: rgba(16,16,21,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav, main, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+    nav { max-width: 1180px; }
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .logo img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-cta { display: flex; align-items: center; }
+    .btn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: var(--cream);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .btn:hover { color: var(--bg); opacity: .9; }
+    main { padding-top: 80px; padding-bottom: 80px; }
+    .eyebrow {
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .article-meta {
+      display: flex;
+      gap: 16px;
+      margin: 14px 0 24px;
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 8px 0 0;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+    }
+    .body h2 {
+      max-width: 700px;
+      margin: 52px 0 18px;
+      font-size: 25px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+    }
+    .body h3 {
+      max-width: 700px;
+      margin: 32px 0 10px;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+    .body p {
+      max-width: 700px;
+      margin: 0 0 20px;
+      color: var(--text-dim);
+      font-size: 16px;
+    }
+    .body strong { color: var(--cream); }
+    .prompt-block {
+      max-width: 700px;
+      margin: 0 0 20px;
+      padding: 16px 20px;
+      background: var(--bg-elevated);
+      border-left: 3px solid var(--slate-light);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .cta-block {
+      max-width: 700px;
+      margin: 42px 0 10px;
+      padding: 24px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+    }
+    .cta-block p { margin-bottom: 16px; }
+    .cta-block .btn { display: inline-block; }
+    .back-link {
+      display: inline-block;
+      margin-top: 48px;
+      color: var(--slate-light);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+    .back-link:hover { color: var(--cream); }
+    footer {
+      padding-top: 28px;
+      padding-bottom: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--text-faint);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+    @media (max-width: 600px) {
+      nav, main, footer { padding-left: 20px; padding-right: 20px; }
+      main { padding-top: 56px; }
+      .nav-links { display: none; }
+      .nav-cta { margin-left: auto; margin-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">
+        <img src="../logo.png" alt="">
+        <span>NORRA</span>
+      </a>
+      <div class="nav-links">
+        <a href="../features.html">Features</a>
+        <a href="../index.html#automation">How it works</a>
+        <a href="../pricing.html">Pricing</a>
+        <a href="../index.html#reviews">Reviews</a>
+        <a href="../faq.html">FAQ</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../privacy.html">Privacy</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn" href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank" rel="noopener">Add to Chrome, Free</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="eyebrow">NotebookLM · 14 min read</div>
+    <h1>30 Useful NotebookLM Prompts You Can Reuse</h1>
+    <div class="article-meta"><span>From the Norra desk</span></div>
+
+    <div class="body">
+      <p>NotebookLM gets much more useful once you move beyond broad requests such as “summarize my sources.” A good prompt tells NotebookLM what to look for, what to compare, what to question, and what kind of answer will actually help you move forward.</p>
+
+      <p>The 30 NotebookLM prompts below are designed to be reused across different notebooks. They cover research, source comparison, studying, writing, critical thinking, revision, and decision-making. Copy a prompt as written or replace anything in square brackets with your own topic, audience, or goal.</p>
+
+      <p>If you use the same prompts regularly, <strong>Norra</strong> makes the process easier. Norra includes ready-made NotebookLM prompts and lets you save your own prompt library so useful instructions are available whenever you need them.</p>
+
+      <h2>What makes a good NotebookLM prompt?</h2>
+
+      <p>The most useful NotebookLM prompts give the model a clear analytical task. Instead of asking for a generic summary, ask it to compare sources, separate evidence from interpretation, identify gaps, challenge a conclusion, or create a specific output for a specific audience.</p>
+
+      <p>It also helps to tell NotebookLM where to stay cautious. Phrases such as <strong>“based only on these sources,” “preserve uncertainty,” “identify disagreements,”</strong> and <strong>“do not make claims that the sources do not support”</strong> can make the result easier to check and more useful for serious research.</p>
+
+      <h2>NotebookLM prompts for understanding your sources</h2>
+
+      <h3>1. Find the main findings</h3>
+      <div class="prompt-block">Identify the five most important findings across these sources. Explain each finding in plain language, show which sources provide the strongest support for it, and note any important uncertainty.</div>
+      <p>Use this after adding several sources when you need a clear overview before digging into individual documents.</p>
+
+      <h3>2. Separate findings from assumptions</h3>
+      <div class="prompt-block">Review these sources and separate what is directly supported by evidence from what appears to be an assumption, interpretation, or speculation. Present the result under two headings: Supported Findings and Assumptions or Interpretations.</div>
+      <p>This is useful for opinion-heavy reports, interviews, market research, and sources where evidence and interpretation are mixed together.</p>
+
+      <h3>3. Explain the topic to a beginner</h3>
+      <div class="prompt-block">Explain [topic] to someone with no prior knowledge of it. Use only information supported by these sources. Define important terms as they appear and avoid unnecessary jargon.</div>
+      <p>A useful first prompt when your notebook covers a subject you are still learning.</p>
+
+      <h3>4. Build a glossary</h3>
+      <div class="prompt-block">Create a glossary of the important terms, concepts, acronyms, and technical language used across these sources. Give each item a concise definition based on how it is used in the material.</div>
+      <p>This works particularly well for academic papers, technical documentation, legal material, and unfamiliar industries.</p>
+
+      <h3>5. Create a structured overview</h3>
+      <div class="prompt-block">Organize the information in these sources into a structured overview of [topic]. Include the main concepts, important evidence, key debates, unanswered questions, and practical implications.</div>
+      <p>Use this when a simple summary feels too shallow but you are not ready to produce a full report.</p>
+
+      <h2>NotebookLM prompts for comparing sources</h2>
+
+      <h3>6. Find where the sources agree</h3>
+      <div class="prompt-block">What conclusions are supported by multiple sources? Group similar findings together and identify which sources independently support each conclusion.</div>
+      <p>This helps distinguish a recurring finding from a claim that appears in only one source.</p>
+
+      <h3>7. Surface disagreements</h3>
+      <div class="prompt-block">Identify the main areas where these sources disagree. For each disagreement, summarize the competing positions, identify the sources supporting each position, and explain what may account for the difference.</div>
+      <p>A strong prompt for literature reviews, policy research, competitor research, and topics where there is no single accepted answer.</p>
+
+      <h3>8. Compare two sources directly</h3>
+      <div class="prompt-block">Compare [Source A] and [Source B]. Show where they agree, where they differ, what evidence each relies on, and any important issue covered by one source but not the other.</div>
+      <p>Replace the placeholders with the exact source names in your notebook.</p>
+
+      <h3>9. Compare approaches or solutions</h3>
+      <div class="prompt-block">Compare the different approaches to [problem] described in these sources. For each approach, explain how it works, its advantages, its limitations, and the conditions under which it appears most suitable.</div>
+      <p>This is useful when your research is ultimately meant to support a choice.</p>
+
+      <h3>10. Build a comparison table</h3>
+      <div class="prompt-block">Create a comparison table for the main [products / theories / approaches / organizations] discussed in these sources. Compare them using the criteria that appear most important in the source material.</div>
+      <p>You can also add your own criteria if you already know what matters.</p>
+
+      <h2>NotebookLM prompts for deeper research</h2>
+
+      <h3>11. Find gaps in the research</h3>
+      <div class="prompt-block">Based only on the sources currently available in this notebook, what important questions remain unanswered? Identify missing evidence, weak areas, overlooked perspectives, and what I should research next.</div>
+      <p>Run this before collecting more sources. It is much better than adding material at random simply because the notebook feels incomplete.</p>
+
+      <h3>12. Generate follow-up research questions</h3>
+      <div class="prompt-block">Generate 10 follow-up research questions that would deepen my understanding of [topic]. Prioritize questions that cannot already be answered confidently from the sources in this notebook.</div>
+      <p>This turns the notebook into a research-planning tool rather than just a place to summarize what you already have.</p>
+
+      <h3>13. Challenge my current conclusion</h3>
+      <div class="prompt-block">Assume my current conclusion is: “[insert conclusion].” Use these sources to challenge it. Identify contradictory evidence, alternative explanations, weak assumptions, and anything I may be overlooking.</div>
+      <p>Useful when the research seems to be confirming your initial view a little too neatly.</p>
+
+      <h3>14. Find the strongest evidence</h3>
+      <div class="prompt-block">Identify the strongest evidence in these sources relating to [question or claim]. Rank the evidence by how directly it supports the issue and explain why each item matters.</div>
+      <p>This helps when you have plenty of material but need to decide what actually belongs in the final output.</p>
+
+      <h3>15. Find weakly supported claims</h3>
+      <div class="prompt-block">Identify claims across these sources that appear weakly supported, rely on limited evidence, use vague language, or should be treated cautiously. Explain the reason for concern in each case.</div>
+      <p>This is especially useful for commercial reports, commentary, marketing claims, and sources written by interested parties.</p>
+
+      <h2>NotebookLM prompts for studying</h2>
+
+      <h3>16. Create a study guide</h3>
+      <div class="prompt-block">Turn these sources into a study guide for [subject or exam]. Organize it by topic and include the concepts I need to understand, key facts, important examples, common areas of confusion, and a short revision checklist.</div>
+      <p>Add the course, module, or exam name if you want a more focused guide.</p>
+
+      <h3>17. Generate useful flashcards</h3>
+      <div class="prompt-block">Create 20 flashcards from these sources. Focus on concepts that are important to understand rather than trivial facts. Put the question on one line and the answer immediately below it.</div>
+      <p>If your notebook covers several chapters, select only the material you are currently revising before running this prompt.</p>
+
+      <h3>18. Create a practice quiz</h3>
+      <div class="prompt-block">Create a 15-question quiz based on these sources. Include a mixture of recall, application, and reasoning questions. List all questions first, then provide a separate answer key with short explanations.</div>
+      <p>This produces a better revision exercise than a quiz made entirely from simple factual recall.</p>
+
+      <h3>19. Find likely misconceptions</h3>
+      <div class="prompt-block">Identify 10 concepts in these sources that a student is most likely to misunderstand or confuse. Explain the misconception, then give the correct explanation and a simple way to remember the difference.</div>
+      <p>Use this before an exam when you already know the basics and want to focus on mistakes that could cost marks.</p>
+
+      <h3>20. Test me one question at a time</h3>
+      <div class="prompt-block">Quiz me on [topic] using only these sources. Ask one question at a time. Wait for my answer before continuing. After each answer, tell me what I got right, what I missed, and what I should review before asking the next question.</div>
+      <p>This turns NotebookLM into a more interactive revision partner instead of giving you a static question list.</p>
+
+      <h2>NotebookLM prompts for writing and synthesis</h2>
+
+      <h3>21. Create a genuine synthesis</h3>
+      <div class="prompt-block">Explain the strongest conclusion that can reasonably be drawn from these sources when considered together. Identify where the evidence is strongest, preserve significant uncertainty or disagreement, and do not make claims that go beyond what the sources support.</div>
+      <p>This is more useful than asking for separate summaries of every source.</p>
+
+      <h3>22. Build an outline from the evidence</h3>
+      <div class="prompt-block">Create an outline for a [report / essay / article / presentation] about [topic] using these sources. Organize the outline around the strongest themes and evidence rather than following the order of the source documents.</div>
+      <p>A good way to move from research collection into writing without simply reproducing the structure of your reading list.</p>
+
+      <h3>23. Turn research into an argument</h3>
+      <div class="prompt-block">Based on these sources, build the strongest evidence-based argument for [position or thesis]. Include the main supporting points, the best evidence for each point, the strongest counterargument, and how the evidence responds to that counterargument.</div>
+      <p>Useful when your final piece needs a defensible position rather than a neutral overview.</p>
+
+      <h3>24. Create an executive summary</h3>
+      <div class="prompt-block">Write an executive summary of these sources for [audience]. Lead with the most important conclusion, then explain the evidence, major risks or limitations, and the actions or questions that deserve attention next.</div>
+      <p>Specify the audience. A summary for a lecturer should not read like one written for a CEO.</p>
+
+      <h3>25. Turn a long explanation into clear takeaways</h3>
+      <div class="prompt-block">Turn the information in these sources about [topic] into 7 concise takeaways. Each takeaway should communicate one meaningful insight, followed by one or two sentences explaining the evidence behind it.</div>
+      <p>This is useful for briefs, presentations, notes, and articles where you need a cleaner output without stripping away the reasoning.</p>
+
+      <h2>NotebookLM prompts for decisions and practical work</h2>
+
+      <h3>26. Create a decision-maker summary</h3>
+      <div class="prompt-block">Summarize these sources for someone who needs to make a decision. Include the most reasonable recommendation based on the available evidence, the strongest support for it, the main risk or limitation, a significant alternative viewpoint, and one question that should be answered before a final decision is made.</div>
+      <p>This works well for market research, product decisions, internal strategy, and business reports.</p>
+
+      <h3>27. Extract action items</h3>
+      <div class="prompt-block">Based on these sources, create a prioritized action list. For each action, explain why it matters, what evidence supports it, what should happen first, and any dependency or risk that could affect execution.</div>
+      <p>Useful when your notebook contains meetings, reports, customer research, or project material that needs to turn into actual work.</p>
+
+      <h3>28. Identify risks</h3>
+      <div class="prompt-block">Identify the most important risks related to [decision, project, or topic] mentioned or implied by these sources. For each risk, explain the evidence, likely consequence, warning signs, and any mitigation discussed in the sources.</div>
+      <p>This is more useful than asking NotebookLM for a generic SWOT analysis that may not reflect the material you uploaded.</p>
+
+      <h3>29. Find opportunities others may miss</h3>
+      <div class="prompt-block">Look across these sources for opportunities, patterns, unmet needs, contradictions, or overlooked connections that are not stated explicitly in any single source but can reasonably be inferred when the material is considered together. Explain the evidence behind each observation.</div>
+      <p>A useful synthesis prompt for competitor research, market research, product discovery, and qualitative research.</p>
+
+      <h3>30. Decide what to research next</h3>
+      <div class="prompt-block">I have finished reviewing the sources currently in this notebook. Based on what is known, uncertain, contradictory, or missing, give me a prioritized list of the next five things I should investigate. Explain why each one deserves further research and what type of source would help.</div>
+      <p>This is a strong final prompt for a research session because it gives your next session a clear starting point.</p>
+
+      <h2>How to get better results from these NotebookLM prompts</h2>
+
+      <p>You do not have to use every prompt exactly as written. The best results usually come from adapting the wording to the notebook in front of you.</p>
+
+      <p>Be specific about the topic you care about. Name the sources you want compared when necessary. Say who the output is for. Ask NotebookLM to preserve uncertainty when the evidence is mixed. If you only want it to work from a particular subset of your material, select those sources before running the prompt.</p>
+
+      <p>It is also worth running prompts in sequence. A useful research workflow might look like this:</p>
+
+      <div class="prompt-block">Main findings → source disagreements → weak evidence → research gaps → synthesis → next research questions</div>
+
+      <p>For studying, the sequence could be:</p>
+
+      <div class="prompt-block">Structured overview → study guide → misconceptions → flashcards → quiz → one-question-at-a-time testing</div>
+
+      <p>The prompt itself matters, but so does when you use it.</p>
+
+      <h2>Save the NotebookLM prompts you actually reuse</h2>
+
+      <p>If you regularly use NotebookLM for research or studying, you will probably find that a small number of prompts become part of your standard workflow. Rewriting or searching for those prompts every time quickly becomes another piece of repetitive work.</p>
+
+      <p><strong>Norra</strong> includes 30 ready-made prompts for common NotebookLM tasks and lets you save your own custom prompts into a reusable prompt library. That means a research-gap prompt, revision quiz, source-comparison framework, or custom workflow can be available the next time you need it.</p>
+
+      <p>Norra also adds tools for moving research into NotebookLM in the first place, including AI chat capture, bulk URL and browser-tab imports, YouTube and RSS importing, and PDF workflows.</p>
+
+      <div class="cta-block">
+        <p><strong>Keep your best NotebookLM prompts one click away.</strong></p>
+        <p>Install Norra to use ready-made prompts, save your own prompt library, and streamline the rest of your NotebookLM research workflow.</p>
+        <a class="btn" href="https://chromewebstore.google.com/detail/norra-power-tools-for-gem/gedbdelnmnikfhnphenolghciijmbieg" target="_blank" rel="noopener">Add Norra to Chrome, Free</a>
+      </div>
+
+      <h2>NotebookLM prompts FAQ</h2>
+
+      <h3>What are the best prompts for NotebookLM?</h3>
+      <p>The best NotebookLM prompts are specific about what you want done with your sources. Prompts that ask NotebookLM to compare evidence, identify disagreements, find research gaps, test understanding, or synthesize several sources usually produce more useful results than broad requests to simply summarize everything.</p>
+
+      <h3>Can I reuse the same NotebookLM prompts?</h3>
+      <p>Yes. Many useful prompts are frameworks rather than one-off questions. A source-comparison prompt, literature-review prompt, study-guide prompt, or research-gap prompt can be reused across different notebooks by changing the topic, source names, or output requirements.</p>
+
+      <h3>What are good NotebookLM prompts for students?</h3>
+      <p>Useful student prompts include creating a study guide, generating flashcards, producing mixed-difficulty quizzes, identifying likely misconceptions, explaining difficult concepts in simple language, and testing you one question at a time.</p>
+
+      <h3>What are good NotebookLM prompts for research?</h3>
+      <p>For research, focus on prompts that compare sources, separate findings from assumptions, surface disagreements, evaluate the strength of evidence, identify missing perspectives, find unanswered questions, and synthesize conclusions across multiple sources.</p>
+
+      <h3>Can I save prompts in NotebookLM?</h3>
+      <p>If you want a dedicated reusable prompt library, Norra lets you save your own NotebookLM prompts and access them again across different research sessions. Norra also includes a set of ready-made prompts for common research and study tasks.</p>
+
+      <h2>The takeaway</h2>
+
+      <p>A good NotebookLM prompt does not need to be complicated. It needs to give the model a useful job.</p>
+
+      <p>Ask it to compare rather than merely summarize. Ask what is missing. Challenge conclusions that appear too neat. Turn your sources into study material, decision support, or a research plan instead of stopping at a shorter version of what you already uploaded.</p>
+
+      <p>The most valuable prompts are usually the ones you refine and reuse. Once you find a few that consistently improve your work, save them and make them part of the way you use NotebookLM rather than starting from a blank chat box every time.</p>
+    </div>
+
+    <a class="back-link" href="../blog.html">← Back to all articles</a>
+  </main>
+
+  <footer>Norra: Supercharge Google NotebookLM.</footer>
+</body>
+</html>
